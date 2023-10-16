@@ -2,13 +2,13 @@
 pipeline {
    agent any
    stages {
-    stage('git Checkout'){
+    stage('Git Checkout'){
       steps {
          script {
-            gitCheckout{
+            gitCheckout(
               git branch: 'main',
               url: 'https://github.com/Hybeekay1/SpringPet-Clinic.git'
-            }
+            )
          }
             }
         }
