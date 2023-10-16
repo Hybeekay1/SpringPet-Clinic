@@ -1,13 +1,11 @@
 pipeline {
-    agent any
-    tools {
-maven 'mymaven'
-}
-
-    stages {
-        stage('Build') {
-            steps {
-                // echo 'Hello World'
+   agent any
+   stages {
+    stage('Git Checkout'){
+      steps {
+         script {
+            git branch: 'main', url: 'https://github.com/Hybeekay1/SpringPet-Clinic.git'
+         }
             }
         }
     }
