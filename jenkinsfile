@@ -4,7 +4,10 @@ pipeline {
     stage('Git Checkout'){
       steps {
          script {
-            git branch: 'main', url: 'https://github.com/Hybeekay1/SpringPet-Clinic.git'
+            gitCheckout{
+              git branch: 'main'
+              url: 'https://github.com/Hybeekay1/SpringPet-Clinic.git'
+            }
          }
             }
         }
