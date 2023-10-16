@@ -6,7 +6,7 @@ pipeline {
       steps {
          script {
             gitCheckout{
-              git branch: 'main'
+              git branch: 'main',
               url: 'https://github.com/Hybeekay1/SpringPet-Clinic.git'
             }
          }
