@@ -10,5 +10,11 @@ pipeline {
          )
             }
         }
+      stage('Git Checkout'){
+      steps {
+         mvnTest
+         )
+            }
+        }
     }
 }
