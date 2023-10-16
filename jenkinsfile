@@ -10,10 +10,9 @@ pipeline {
          )
             }
         }
-      stage('Git Checkout'){
+      stage('Unit Test Maven'){
       steps {
-         mvnTest
-         )
+         mvnTest()
             }
         }
     }
