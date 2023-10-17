@@ -128,67 +128,67 @@ Jenkins was used to setup the CICD pipeline using pipeline as code method (groov
 
 # jenkins pipelin code
 
-bash```
-@Library('my-shared-library') _
-pipeline {
-   agent any
-   parameters{
-        choice(name: 'action', choices: 'create\ndelete', description: 'Choose create/Destroy')
-        string(name: 'ImageName', description: "name of the docker image", defaultValue: 'pet-clinic')
-        string(name: 'HubUser', description: "Docker Hub user", defaultValue: 'malik0x')
-   }
-   stages {
-    stage('Git Checkout'){
-    when { expression {  params.action == 'create' } }
-      steps {
-         gitCheckout(
-            branch: "main",
-            url: "https://github.com/Hybeekay1/SpringPet-Clinic.git"
-         )
+
+        @Library('my-shared-library') _
+        pipeline {
+           agent any
+           parameters{
+                choice(name: 'action', choices: 'create\ndelete', description: 'Choose create/Destroy')
+                string(name: 'ImageName', description: "name of the docker image", defaultValue: 'pet-clinic')
+                string(name: 'HubUser', description: "Docker Hub user", defaultValue: 'malik0x')
+           }
+           stages {
+            stage('Git Checkout'){
+            when { expression {  params.action == 'create' } }
+              steps {
+                 gitCheckout(
+                    branch: "main",
+                    url: "https://github.com/Hybeekay1/SpringPet-Clinic.git"
+                 )
+                    }
+                }
+              stage('Maven Build'){
+              when { expression {  params.action == 'create' } }
+              steps {
+                 mvnBuild()
+                    }
+                }
+              stage('Testing'){
+              when { expression {  params.action == 'create' } }
+              steps {
+                 script {
+                    def SonarQubecredentialsId = 'sonarqube-api'
+                    codeTest(SonarQubecredentialsId)
+                       }
+                    }
+                }
+              stage('Docker Build'){
+              when { expression {  params.action == 'create' } }
+              steps {
+                 script {
+                    dockerBuild("${params.ImageName}","${params.HubUser}")
+                       }
+                    }
+                }
+              stage('Docker Push To Docker Hub'){
+              when { expression {  params.action == 'create' } }
+              steps {
+                 script {
+                    dockerImagePush("${params.ImageName}","${params.HubUser}")
+                       }
+                    }
+                }
+              stage('App Deploy'){
+              when { expression {  params.action == 'create' } }
+              steps {
+                 script {
+                    deployApp("${params.ImageName}","${params.HubUser}")
+                       }
+                    }
+                }
             }
         }
-      stage('Maven Build'){
-      when { expression {  params.action == 'create' } }
-      steps {
-         mvnBuild()
-            }
-        }
-      stage('Testing'){
-      when { expression {  params.action == 'create' } }
-      steps {
-         script {
-            def SonarQubecredentialsId = 'sonarqube-api'
-            codeTest(SonarQubecredentialsId)
-               }
-            }
-        }
-      stage('Docker Build'){
-      when { expression {  params.action == 'create' } }
-      steps {
-         script {
-            dockerBuild("${params.ImageName}","${params.HubUser}")
-               }
-            }
-        }
-      stage('Docker Push To Docker Hub'){
-      when { expression {  params.action == 'create' } }
-      steps {
-         script {
-            dockerImagePush("${params.ImageName}","${params.HubUser}")
-               }
-            }
-        }
-      stage('App Deploy'){
-      when { expression {  params.action == 'create' } }
-      steps {
-         script {
-            deployApp("${params.ImageName}","${params.HubUser}")
-               }
-            }
-        }
-    }
-}
-bash```
+
 
 # Spring PetClinic Sample Application [![Build Status](https://github.com/spring-projects/spring-petclinic/actions/workflows/maven-build.yml/badge.svg)](https://github.com/spring-projects/spring-petclinic/actions/workflows/maven-build.yml)
 
