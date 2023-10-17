@@ -102,29 +102,8 @@ Continuous Delivery (CD):
 Similar to Continuous Deployment: The main difference is that with Continuous Delivery, code changes are automatically deployed to staging or pre-production environments, but deployment to production is done manually.
 Benefits:
 
-Faster Development: It reduces the time it takes to get new features to users.
-Reliability: Automated testing and deployments reduce the chances of human error.
-Consistency: Environments are consistent, reducing the "it works on my machine" problem.
-Feedback Loop: Developers get fast feedback on the impact of their changes.
-Tools:
-
-Version Control Systems (e.g., Git): These are at the heart of CI/CD. They enable collaboration and version management.
-CI Servers (e.g., Jenkins, GitLab CI, Travis CI): These automate the process of integration and testing.
-Deployment and Orchestration Tools (e.g., Kubernetes, Docker): These manage the deployment of applications.
-Configuration Management Tools (e.g., Ansible, Puppet, Chef): They help automate the setup and configuration of environments.
-Pipeline:
-
-A CI/CD pipeline is a series of automated steps that code changes go through from development to deployment. It typically includes steps like building, testing, and deploying the code.
-Deployment Strategies:
-
-Blue-Green Deployment: A new version is deployed alongside the old version. Traffic is switched from the old to the new version.
-Canary Release: A small percentage of traffic is directed to the new version to ensure it's stable before full deployment.
-Rolling Deployment: New versions are gradually deployed across servers or clusters, minimizing downtime.
-CI/CD is crucial in modern software development as it helps teams deliver high-quality code more efficiently and with fewer errors. It's an integral part of DevOps practices, promoting collaboration between development and operations teams.
-
-
 ## CICD process
-Jenkins was used to setup the CICD pipeline using pipeline as code method (groovy), also jenkins shared library was also intergrated to make the code flexible and re-useable [Jekins Shared Library repo link (https://github.com/Hybeekay1/Jenkins_Shared_Library.git)
+Jenkins was used to setup the CICD pipeline using pipeline as code method (groovy), also jenkins shared library was also intergrated to make the code flexible and re-useable [Jekins Shared Library repo link] (https://github.com/Hybeekay1/Jenkins_Shared_Library.git)
 
 # jenkins pipelin code
 
@@ -194,7 +173,7 @@ Git, maven, sonaqube and docker were integrated with Jenkins
 
 # Jenkins interface
 
-<img src="Screenshot 2023-10-17 134028.png" alt="Alt text">
+<img src="images/Screenshot 2023-10-17 134028.png" alt="Alt text">
 
 # Jenkins CICD stage
 
