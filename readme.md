@@ -103,7 +103,7 @@ Similar to Continuous Deployment: The main difference is that with Continuous De
 Benefits:
 
 ## CICD process
-Jenkins was used to setup the CICD pipeline using pipeline as code method (groovy), also jenkins shared library was also intergrated to make the code flexible and re-useable [Jekins Shared Library repo link] (https://github.com/Hybeekay1/Jenkins_Shared_Library.git)
+Jenkins was used to setup the CICD pipeline using pipeline as code method (groovy), also jenkins shared library was also intergrated to make the code flexible and re-useable [Jekins Shared Library repo link](https://github.com/Hybeekay1/Jenkins_Shared_Library.git)
 
 # jenkins pipelin code
 
