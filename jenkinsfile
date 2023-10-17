@@ -22,7 +22,7 @@ pipeline {
          mvnBuild()
             }
         }
-      stage('Test'){
+      stage('Testing'){
       when { expression {  params.action == 'create' } }
       steps {
          script {
