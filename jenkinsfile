@@ -23,8 +23,10 @@ pipeline {
       stage('Test'){
       when { expression {  params.action == 'create' } }
       steps {
+         script {
             def SonarQubecredentialsId = 'sonarqube-api'
             codeTest(SonarQubecredentialsId)
+               }
             }
         }
     }
