@@ -4,7 +4,7 @@ pipeline {
    parameters{
         choice(name: 'action', choices: 'create\ndelete', description: 'Choose create/Destroy')
         string(name: 'ImageName', description: "name of the docker image", defaultValue: 'pet-clinic')
-        string(name: 'HubUser', description: "Docker Hub user", defaultValue: 'Malik0x')
+        string(name: 'HubUser', description: "Docker Hub user", defaultValue: 'malik0x')
    }
    stages {
     stage('Git Checkout'){
