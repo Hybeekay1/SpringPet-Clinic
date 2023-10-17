@@ -211,3 +211,12 @@ Git, maven, sonaqube and docker were integrated with Jenkins
 # Pet-Clinic application
 
 <img src="images/Screenshot 2023-10-17 134238.png" alt="Alt text">
+
+
+# docker file 
+        FROM openjdk:17
+        VOLUME /app
+        EXPOSE 8080
+        ARG JAR_FILE=target/*.jar
+        ADD ${JAR_FILE} app.jar
+        ENTRYPOINT ["java","-jar","/app.jar"]
